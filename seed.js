@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Question = require("./src/models/Question");
 
-mongoose.connect("mongodb://localhost:27017/maths-quiz");
+mongoose.connect("mongodb://localhost:27017/mathsquiz");
 
 const seedQuestions = async () => {
     const questions = [
