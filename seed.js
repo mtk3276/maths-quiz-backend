@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Question = require("./src/models/Question");
+const Score = require("./src/models/Score");
 
 mongoose.connect("mongodb://localhost:27017/mathsquiz");
 
@@ -23,4 +24,38 @@ const seedQuestions = async () => {
     }
 };
 
+const seedScores = async () => {
+    const scores = [
+        { username: "Muhsina", score: 1 },
+        { username: "Aamilah", score: 2 },
+        { username: "Tom", score: 4 },
+        { username: "Will", score: 2 },
+        { username: "Naimah", score: 5 },
+        { username: "Mo", score: 5 },
+        { username: "Jane", score: 2 },
+        { username: "Naim", score: 1 },
+        { username: "Harry", score: 3 },
+        { username: "Bob", score: 1 },
+        { username: "Dick", score: 1 },
+        { username: "John", score: 3 },
+        { username: "Jack", score: 0 },
+        { username: "Zahra", score: 3 },
+        { username: "Is\'haaq", score: 5 },
+        { username: "Betty", score: 4 },
+        { username: "James", score: 3 },
+        { username: "Tamjid", score: 4 },
+    ];
+
+    try {
+        await Score.deleteMany();
+        await Score.insertMany(scores);
+        console.log(`Database seeded with ${scores.length} scores.`);
+    } catch (error) {
+        console.error("Error seeding database:", error);
+    } finally {
+        mongoose.connection.close();
+    }
+}
+
 seedQuestions();
+seedScores();
