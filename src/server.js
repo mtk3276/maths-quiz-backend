@@ -7,7 +7,7 @@ const scoreRoutes = require("./routes/scoreRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 5001;
-const dbUrl = process.env.NODE_ENV === "production" ? process.env.MONGO_URI_PROD : process.env.MONGO_URI_DEV;
+const dbUrl = process.env.NODE_ENV.toLowerCase() === "production" ? process.env.MONGO_URI_PROD : process.env.MONGO_URI_DEV;
 
 app.use(cors());
 app.use(express.json());
