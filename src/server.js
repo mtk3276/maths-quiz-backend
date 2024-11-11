@@ -1,16 +1,13 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const questionRoutes = require("./routes/questionRoutes");
 const scoreRoutes = require("./routes/scoreRoutes");
 
-require("dotenv").config({
-    path: process.env.NODE_ENV === "production" ? ".env.production" : ".env.development"
-});
-
 const app = express();
-const PORT = process.env.PORT;
-const dbUrl = process.env.DB_URI;
+const PORT = process.env.PORT || 5001;
+const dbUrl = process.env.NODE_ENV === "production" ? process.env.MONGO_URI_PROD : process.env.MONGO_URI_DEV;
 
 app.use(cors());
 app.use(express.json());
