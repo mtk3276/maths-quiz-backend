@@ -1,8 +1,11 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 const Question = require("./src/models/Question");
 const Score = require("./src/models/Score");
 
-mongoose.connect("mongodb://localhost:27017/mathsquiz");
+const dbUrl = process.env.NODE_ENV === "production" ? process.env.MONGO_URI_PROD : process.env.MONGO_URI_DEV;
+
+mongoose.connect(dbUrl);
 
 const seedQuestions = async () => {
     const questions = [
