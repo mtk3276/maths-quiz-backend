@@ -21,7 +21,7 @@ app.use("/api/score", scoreRoutes);
 mongoose.connect(dbUrl)
     .then (() => {
         app.listen(PORT, () => {
-            console.log(`Server running on https://localhost:${PORT}`);
+            console.log(`Server running on port: ${PORT}`);
             console.log(`Database running on ${dbUrl}`)
         });        
     })
